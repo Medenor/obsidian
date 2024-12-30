@@ -1,0 +1,57 @@
+/* Author : jwintyo from Reddit */
+
+/* Highlight color and styling */
+.theme-dark {
+    --text-highlight-bg-rgb: 207, 175, 7; /* Darker Yellow */
+}
+.theme-light {
+    --text-highlight-bg-rgb: 207, 175, 7; /* Lighter Yellow */
+}
+
+body {
+    --line-height-normal: 1.8;
+    --text-highlight-border-width: 0.5px;
+    --text-highlight-border-opacity: 1;
+    --text-highlight-text-opacity: 1;
+    --text-highlight-border-radius: var(--radius-s);
+    --text-highlight-padding-block: var(--size-2-1);
+    --text-highlight-padding-inline: var(--size-2-2);
+    --text-highlight-bg: rgba(var(--text-highlight-bg-rgb), 0.1);
+}
+
+/* source mode */
+.cm-s-obsidian:not(.is-live-preview) {
+    /* top and bottom */
+    span.cm-highlight {
+        border-block: var(--text-highlight-border-width) solid rgba(var(--text-highlight-bg-rgb), var(--text-highlight-border-opacity));
+        padding-block: var(--text-highlight-padding-block);
+        -webkit-box-decoration-break: clone;
+        color: rgba(var(--text-highlight-bg-rgb), var(--text-highlight-text-opacity));
+    }
+    /* start of the highlight (first formatting ==) */
+    :not(.cm-highlight:not(.cm-formatting-highlight)) + span.cm-formatting-highlight,
+    span.cm-formatting-highlight:first-child {
+        border-top-left-radius: var(--text-highlight-border-radius);
+        border-bottom-left-radius: var(--text-highlight-border-radius);
+        border-left: var(--text-highlight-border-width) solid rgba(var(--text-highlight-bg-rgb), var(--text-highlight-border-opacity));
+        padding-left: var(--text-highlight-padding-inline);
+    }
+    /* end of the highlight (last formatting ==) */
+    .cm-highlight:not(.cm-formatting-highlight) + span.cm-formatting-highlight,
+    span.cm-highlight:last-child {
+        border-top-right-radius: var(--text-highlight-border-radius);
+        border-bottom-right-radius: var(--text-highlight-border-radius);
+        border-right: var(--text-highlight-border-width) solid rgba(var(--text-highlight-bg-rgb), var(--text-highlight-border-opacity));
+        padding-right: var(--text-highlight-padding-inline);
+    }
+}
+
+/* live preview and preview */
+.cm-s-obsidian.is-live-preview span.cm-highlight,
+.markdown-rendered mark {
+    border-radius: var(--text-highlight-border-radius);
+    border: var(--text-highlight-border-width) solid rgba(var(--text-highlight-bg-rgb), var(--text-highlight-border-opacity));
+    padding: var(--text-highlight-padding-block) var(--text-highlight-padding-inline);
+    -webkit-box-decoration-break: clone;
+    color: rgba(var(--text-highlight-bg-rgb), var(--text-highlight-text-opacity));
+}
